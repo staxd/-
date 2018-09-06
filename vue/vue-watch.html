@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style>
+		
+	</style>
+	<script src="js/vue.1.0.js"></script>
+</head>
+<body>
+	<input type="button" value="改变了" @click='changed'>
+	<script type="text/javascript">
+		var a = new Vue({
+			el:"body",
+			data:{
+				a:10,
+				b:20
+			},
+			methods:{
+				changed:function(){
+					this.a = 20;
+				}
+			}
+		});
+		a.$watch('a',function(){
+			console.log('改变了');
+		})
+	</script>
+</body>
+</html>

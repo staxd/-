@@ -1,0 +1,171 @@
+vue => view
+
+___________________________________
+
+一、概念
+
+1.x
+2.x
+常用指令：
+
+v-show   display  true/false 
+
+json =>键值对
+左边是key  右边是value
+
+v-for {{$index}}=>索引值
+{{$key}}=>key值
+
+双向绑定 => v-model
+数据 和 输出 进行绑定
+
+__________________________________
+
+二、事件
+
+v-on:click <=> @click
+
+事件对象
+$event
+
+防止冒泡
+1.event.cancelBubble = true
+2.event.stopPropagation();
+3.@click.stop 推荐
+
+阻止默认事件
+1.event.preventDefault
+2.@contextmenu.prevent 推荐
+
+键盘事件
+keydown/keyup
+keyCode
+
+keydown.65.67.68
+keydown.left/right/up/down
+
+______________________________________
+
+三、模板 {{}}
+
+data改变，输出内容会从新渲染
+用{{*msg}}，只渲染一遍
+
+{{}} => innertext
+{{{}}} => innerHTML
+
+_______________________________________
+
+四、属性
+
+一但使用vue的方法，就不要使用vue的模板。
+使用原生的属性时，请使用模板。
+
+
+v-bind:属性名 => :属性名
+v-bind:属性名="vue的data值"
+
+style/class =>经常用的两个属性
+
+<div :class="json"></div>
+json
+{
+	class的类名：true/false
+}
+
+<div :style="json"></div>
+style => json
+	  => [json,json,json]
+	  => :style:"string"
+
+_____________________________________
+
+五、选项卡：tab面板
+
+_____________________________________
+
+六、vue1.x 交互
+
+前端           -   后端   -      数据库
+html+css+js     php/net/node    /mysql
+
+node.js => js基本都是js语法
+node安装完后 有个包管理器 叫 npm
+npm 有个方法叫 install
+npm install bower -g
+bower - 只是npm包管理器中的其中一个包
+bower info vue 查看版本
+bower i 下载库的名字#版本号
+推荐了一个插件 vue-resource
+
+demo <>
+登陆
+输入用户名
+输入密码
+登陆按钮
+登陆成功 -> 成功 ->用户名密码错误
+
+get/post
+this.$http -> get/post
+
+this.$http.get('地址',{
+	
+}).then(function(){},function(){
+	
+})
+
+this.$http.get('地址',{
+	
+}).then(function(){}).catch(function(){
+	
+})
+
+this.$http.post('地址',{
+	
+}).then(function(){}).catch(function(){
+	
+})
+
+
+vue 1.x - get / post / jsonp
+
+jsonp=> 回调函数的key值
+
+_______________________________
+
+七、计算函数
+data
+computed - 可以计算的属性 计算咱们的data
+
+属性 必须是函数
+c:function(){
+	return 计算输出值；
+}
+
+need:{
+	//读取
+	get:function(){
+
+	},
+	//设置
+	set:function(){
+
+	}
+}
+
+$watch() <= 看 盯着 回调函数帮咱们执行
+watch 真正的数据改了 才会出发回调函数了
+a.$watch(数据，function（）{})
+
+——————————————————————————————————————————————
+
+八、过滤器
+
+过滤器就是把原来的数据 加工一下变成想要的
+
+vue内置过滤器
+capitalize - 首字母大写
+uppercase  - 所有的英文字母大写
+lowercase  - 所有的英文字母小写
+
+currency   - 变成货币形式的一种输出
