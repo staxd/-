@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.1.0.js"></script>
+	<style type="text/css" >
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
+		div{
+			width:200px;
+			height:200px;
+			background:black;
+			position:absolute;
+		}
+	</style>
+</head>
+<body>
+	<div id="box" v-drag v-random-color ></div>
+	<script type="text/javascript">
+		Vue.directive('randomColor',function(){
+			this.el.onclick = function(){
+				this.style.background = "rgb("+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+","+parseInt(Math.random()*256)+")";
+			}
+		})
+
+
+		Vue.directive('drag',function(){
+		
+			this.el.onmousedown =function(e){
+				// 做兼容
+				var ev = e || event;
+			
+				var l = ev.offsetX;
+		
+				var t = ev.offsetY;
+				document.onmousemove =function(e){
+					console.log(e);
+					var ev = e || event;
+					this.style.left = ev.clientX - l + 'px';
+					this.style.top = ev.clientY - t + 'px';
+				}.bind(this);
+				document.onmouseup=function(){
+					this.onmousemove = this.onmouseup = null;
+				}
+			}
+		})
+		new Vue({
+			el:'#box'
+		})
+	</script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.css">
+	<style type="text/css" >
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
+		.wu-transition{
+			background: black;
+		}
+		
+	</style>
+</head>
+<body>
+	<button @click="changed">点我</button>
+	<div v-show="s" transition="wu" class="animated" ></div>
+	<script type="text/javascript">
+		new Vue({
+			el:'body',
+			data:{
+				s:true
+			},
+			methods:{
+				changed(){
+					this.s = !this.s;
+				}
+			},
+			transitions:{
+				"wu":{
+					enterClass:"flash",
+					leaveClass:"flash"
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="js/vue.1.0.js"></script>
+</head>
+<body>
+	<input type="text" v-model='money'>
+	<!-- currency - 变成货币形式的一种输出 -->
+	<br>{{money | currency}}
+	<script type="text/javascript">
+		new Vue({
+			el:"body",
+			data:{
+				money:''
+			}
+		})
+	</script>
+</body>
+</html>

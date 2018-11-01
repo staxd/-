@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.css">
+	<style type="text/css" >
+	
+		
+	</style>
+</head>
+<body>
+	<aaa></aaa>
+	
+	<div id='div1'>
+		<aaa></aaa>
+	</div>
+	<script type="text/javascript">
+		var wu = Vue.extend({
+			data(){
+				return {
+					arr:['帅','很帅','超级帅'],
+					arr2:['男18','女19','男30']
+				}
+			},
+			template:'<h1>大家好！ <input type="button" v-for="i in arr" :value="i"><div v-for="i in arr2">{{i}}</div></h1>'
+		});
+		Vue.component("aaa",wu);
+
+		new Vue({
+			el:'#div1',
+			conponents:{
+				'aaa':wu
+			}
+		})
+		new Vue({
+			el:'body'
+			
+		})
+
+	</script>
+</body>
+</html>

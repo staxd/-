@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<style type="text/css" >
+	
+		
+	</style>
+</head>
+<body>
+	<div id='box'>
+		<input type="button" value="aaa" @click="msg='aaa'">
+		<input type="button" value="bbb" @click="msg='bbb'">
+		<compontent :is="msg"></compontent>
+		<!--  is属性是哪个组件 就把名字给is属性即可（初始为aaa） -->
+	</div>
+	<template id="wua">
+		<h1>我是aaa组件</h1>
+		<span>{{msg}}</span>
+	</template>
+	<template id="wub">
+		<h1>我是bbb组件</h1>
+		<span>{{msg2}}</span>
+	</template>
+	<script type="text/javascript">
+		new Vue({
+			el:'#box',
+			data:{
+				msg:"aaa"
+			},
+			components:{
+				"aaa":{
+					data(){
+						return {
+							msg:'hahaha'
+						}
+					},
+					template:'#wua'
+				},
+				"bbb":{
+					data(){
+						return {
+							msg2:"wowowow"
+						}
+					},
+					template:'#wub'
+				}
+			}
+		})
+	
+
+	</script>
+</body>
+</html>

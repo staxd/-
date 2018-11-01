@@ -1,0 +1,57 @@
+//index.wxml
+
+
+<view id='indexTools' class='{{menuFixed?"vote-fix":"vote-none"}}'></view>
+
+
+
+
+//index.js
+//获取应用实例
+const app = getApp()
+
+Page({
+  data: {
+    imgUrls: [
+      '../../images/poster.png',
+      '../../images/poster2.png',
+      '../../images/poster3.png'
+    ],
+    menuFixed:false,//默认否
+    menuTop:''//菜单离窗口顶部的高度默认为空
+  },
+
+  //生命周期函数--监听页面显示
+  onShow: function () {
+    this.getTabToTop()
+  },
+
+  //获取导航栏的内容到顶部的高度
+  getTabToTop: function () {
+    var that = this
+    var query = wx.createSelectorQuery()
+    query.select('#indexTools').boundingClientRect()
+    query.selectViewport().scrollOffset()
+    query.exec(function (res) {
+      that.setData({
+       menuTop : res[0].top,       // menu的上边界坐标
+      })
+    })
+  },
+
+// 监听页面滚动距离scrollTop
+  onPageScroll:function(e){
+    var that = this
+
+//当页面滚动距离scrollTop > menuTop菜单栏距离文档顶部的距离时，菜单栏固定定位
+    if (e.scrollTop >= that.data.menuTop) {
+      that.setData({
+        menuFixed: true
+      })
+    } else {
+      that.setData({
+        menuFixed: false
+      })
+    }
+  }
+})

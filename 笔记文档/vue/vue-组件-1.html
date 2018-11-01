@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/animate.css/animate.css">
+	<style type="text/css" >
+	
+		
+	</style>
+</head>
+<body>
+	<aaa></aaa>
+	<aaa></aaa>
+	<aaa></aaa>
+	<aaa></aaa>
+	
+	<script type="text/javascript">
+		var wu = Vue.extend({
+			template:'<h1>大家好！<h2>我是男神！</h2></h1>'
+		});
+		Vue.component("aaa",wu);
+
+		new Vue({
+			el:'body'
+		})
+	</script>
+
+</body>
+</html>

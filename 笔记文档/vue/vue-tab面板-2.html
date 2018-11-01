@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<style type="text/css" >
+		*{
+			padding: 0px;
+			margin: 0px;
+
+		}
+		#main{
+			width: 300px;
+			height: 300px;
+			border: 1px solid black;
+			position: relative;
+		}
+		#main>div{
+			width: 100%;
+			height: 100%;
+			position: absolute;
+		}
+		input{
+			margin-right: 10px;
+		}
+		input.active{
+			background: pink;
+		}
+		.wu-transition{
+			opacity: 1;
+			transition: 1s;
+		}
+		.wu-enter{
+			opacity: 0;
+		}
+		.wu-leave{
+			opacity: 0;
+		}
+	</style>
+</head>
+<body>
+	<input type="button" v-for="i in buttonArr" :value="i" @click="index=$index" :class='index==$index?"active":""'>
+	<div id="main" >
+		<div v-for="i in colorArr" :style="{background:i}" v-show='index==$index?true:false' transition='wu'>{{i}}</div>
+
+	</div>
+
+	<script type="text/javascript">
+		new Vue({
+			el:'body',
+			data:{
+				buttonArr:["帅","很帅","超级帅"],
+				colorArr:["green","yellow","red"],
+				index:0
+			}
+		})
+	</script>
+
+</body>
+</html>

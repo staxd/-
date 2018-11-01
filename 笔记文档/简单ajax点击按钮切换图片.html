@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		input.active{
+			background: red;
+		}
+		div img{
+			width: 800px;
+			height: 450px;
+		}
+</style>
+</head>
+<body>
+	<input type="button" v-for='i in inputValue' :value="i" :class='$index==index?"active":""' @click="add($index)">
+	<div v-for='i in arr' v-show='$index==index?true:false'><img :src="i"></div>
+	<script type="text/javascript"  src="vue/js/vue.1.0.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript">
+			var phpUrl = 'https://www.sxscott.com/gujie/index.php/Sowingmap/img_play';
+			var imgUrl = 'https://www.sxscott.com/gujie/public/sowing_map/';
+			$.ajax({
+			url: phpUrl,
+			type: 'post',
+			dataType: 'json',
+			data: {},
+		})
+		.done(function(res) {
+			var imgUrls = JSON.parse(res.img);
+			var arr=[];
+			for (var i = 0; i < imgUrls.length; i++) {
+        	  arr[i] = imgUrl + imgUrls[i];
+      		 }
+			new Vue({
+				el:'body',
+				data:{
+					index:0,
+					inputValue:["wu","you"],
+					arr
+				},
+				methods:{
+					add:function(myIndex){
+						this.index = myIndex;
+					}
+				}
+			})
+		})
+		.fail(function() {
+			console.log("error");
+		})
+	</script>
+</body>
+</html>

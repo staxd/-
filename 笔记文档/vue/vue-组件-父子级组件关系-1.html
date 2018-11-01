@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<style type="text/css" >
+	</style>
+</head>
+<body>
+	<div id='box'>
+		<aaa>
+			
+		</aaa>
+	</div>
+	<template id="aaa">
+		<h1>我是子集组件1</h1>
+		<bbb></bbb>
+	</template>
+	<template id="bbb">
+		<h1>我是子集组件2</h1>
+		<ccc></ccc>
+	</template>
+		<template id="ccc">
+		<h1>我是子集组件3</h1>
+	</template>
+	<script type="text/javascript">
+		new Vue({
+			el:'#box',
+			components:{
+//				id为box下的aaa标签
+				aaa:{
+					template:"#aaa",
+					components:{
+//						aaa标签下的bbb标签
+						bbb:{
+							template:"#bbb",
+							components:{
+//								bbb标签下的ccc标签
+								ccc:{
+									template:"#ccc"
+								}
+							}
+						}
+					}
+				}
+			}
+		})	
+	</script>
+</body>
+</html>

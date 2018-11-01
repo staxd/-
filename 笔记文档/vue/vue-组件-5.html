@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<style type="text/css" >
+	
+		
+	</style>
+</head>
+<body>
+	<div id='div1'>
+		<bbb></bbb>
+	</div>
+	<script type="text/javascript">
+		new Vue({
+			el:'#div1',
+			components:{
+				"bbb":{
+					data(){
+						return {
+							msg:'你好我是局部组件!'
+						}
+					},
+					methods:{
+						add(){
+							this.msg="其实我很丑！";
+						}
+					},
+					template:'<h1> 大家好，我是里面的组件!<input @click="add" value="我世界第一帅" type="button"></input>{{msg}}</h1>'
+				}
+			}
+		})
+
+	</script>
+</body>
+</html>

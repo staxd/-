@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<style type="text/css" >
+	</style>
+</head>
+<body>
+	<!-- 子集aaa想拿父级box里的msg -->
+	<div id='box'>
+		<!-- 自己定义的wu拿到box里的msg -->
+		<aaa :wu="msg">
+			
+		</aaa>
+	</div>
+	<template id="aaa">
+		<h1>我是子集组件1</h1>{{wu}}
+	</template>
+	<script type="text/javascript">
+		new Vue({
+			el:'#box',
+			data:{
+				msg:'abcd的故事的風格'
+			},
+			components:{
+				aaa:{
+					// props数组可以包含自己定义的名称
+					props:['wu'],
+					template:"#aaa"
+				}
+			}
+		})	
+	</script>
+</body>
+</html>

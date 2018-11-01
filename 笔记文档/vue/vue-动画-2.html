@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="bower_components/vue/dist/vue.js"></script>
+	<style type="text/css" >
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: black;
+		}
+		.wu-transition{
+			opacity: 1;
+			transition:.3s;
+			transform: translate(0,0);
+			background: black;
+		}
+		.aaa{
+			opacity: 0;
+			transform: translateX(90px);
+			background: red;
+		}
+		.bbb{
+			opacity: 0;
+			transform: translateY(90px);
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<button @click="changed">点我</button>
+	<div v-show="s" transition="wu"></div>
+	<script type="text/javascript">
+		new Vue({
+			el:'body',
+			data:{
+				s:true
+			},
+			methods:{
+				changed(){
+					this.s = !this.s;
+				}
+			},
+			transitions:{
+				"wu":{
+					enterClass:"bbb",
+					leaveClass:"aaa"
+				}
+			}
+		})
+	</script>
+
+</body>
+</html>
